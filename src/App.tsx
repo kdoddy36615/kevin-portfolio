@@ -96,7 +96,7 @@ const skills = {
     "Vite",
   ],
   Backend: ["Node.js", "Supabase", "PostgreSQL", "REST APIs", "Edge Functions"],
-  "AI / Automation": ["OpenAI API", "Claude API", "Playwright", "Puppeteer"],
+  "AI / Automation": ["OpenAI API", "Claude API", "Azure DevOps CLI", "Figma MCP", "Playwright", "Puppeteer"],
   "Dev Tools": [
     "Git",
     "Turborepo",
