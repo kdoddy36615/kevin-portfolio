@@ -350,7 +350,7 @@ export default function App() {
             href="https://github.com/kdoddy36615"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-500 hover:text-white transition-colors"
+            className="text-zinc-300 hover:text-white transition-colors"
           >
             <Github size={20} />
           </a>
@@ -358,13 +358,13 @@ export default function App() {
             href="https://linkedin.com/in/kevindoddy"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-500 hover:text-white transition-colors"
+            className="text-zinc-300 hover:text-white transition-colors"
           >
             <Linkedin size={20} />
           </a>
           <a
             href="mailto:kevin36615@gmail.com"
-            className="text-zinc-500 hover:text-white transition-colors"
+            className="text-zinc-300 hover:text-white transition-colors"
           >
             <Mail size={20} />
           </a>
