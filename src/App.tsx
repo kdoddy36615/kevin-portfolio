@@ -39,7 +39,7 @@ const projects = [
     tagline:
       "Local-first relocation toolkit with multi-vehicle convoy planning",
     status: "live" as const,
-    demoUrl: "https://texas-move-planner-kevins-projects-cc8e5577.vercel.app",
+    demoUrl: "https://move-planner-demo.vercel.app",
     repoUrl: "https://github.com/kdoddy36615/texas-move-planner-portfolio",
     stack: [
       "React",
