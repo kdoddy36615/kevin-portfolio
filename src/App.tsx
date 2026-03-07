@@ -9,6 +9,8 @@ import {
   Briefcase,
   GraduationCap,
   FileText,
+  Zap,
+  ArrowRight,
 } from "lucide-react";
 
 const projects = [
@@ -198,6 +200,134 @@ function ProjectCard({
   );
 }
 
+const pipelineStages = [
+  {
+    name: "Task Ingestion",
+    desc: "CLI pulls assigned tickets with acceptance criteria",
+  },
+  {
+    name: "Compliance Guard",
+    desc: "CLAUDE.md enforces org rules — security, PHI, code standards",
+  },
+  {
+    name: "Design Sync",
+    desc: "Figma MCP extracts component specs and design tokens",
+  },
+  {
+    name: "Implementation",
+    desc: "Claude Code writes, tests, and iterates with full context",
+  },
+  {
+    name: "Ship",
+    desc: "CLI commits, pushes, and opens draft PR for review",
+  },
+];
+
+const workflowTools = [
+  "Claude Code",
+  "CLAUDE.md",
+  "Azure DevOps CLI",
+  "Figma MCP",
+  "GitLab CLI",
+];
+
+function WorkflowSection() {
+  const color = "#06b6d4";
+  return (
+    <section className="max-w-4xl mx-auto px-6 pb-16">
+      <h2 className="text-2xl font-bold mb-8">AI-Augmented Development</h2>
+      <div
+        className="bg-[#111118] border rounded-2xl p-6"
+        style={{ borderColor: `${color}33` }}
+      >
+        {/* Header */}
+        <div className="flex items-center gap-2 mb-1">
+          <Zap size={20} style={{ color }} />
+          <h3 className="text-lg font-bold" style={{ color }}>
+            AI-Augmented Development
+          </h3>
+        </div>
+        <p className="text-sm text-zinc-400 mb-6">
+          A repeatable pipeline that turns CLI tools + Claude Code into a
+          full-cycle development workflow.
+        </p>
+
+        {/* Pipeline */}
+        <div className="flex flex-wrap items-start gap-2 mb-6">
+          {pipelineStages.map((stage, i) => (
+            <div key={stage.name} className="flex items-start gap-2">
+              <div
+                className="rounded-lg border px-3 py-2 min-w-[130px]"
+                style={{
+                  borderColor: `${color}33`,
+                  backgroundColor: `${color}08`,
+                }}
+              >
+                <p
+                  className="text-xs font-semibold uppercase tracking-wider mb-0.5"
+                  style={{ color }}
+                >
+                  {stage.name}
+                </p>
+                <p className="text-xs text-zinc-400 leading-snug">
+                  {stage.desc}
+                </p>
+              </div>
+              {i < pipelineStages.length - 1 && (
+                <ArrowRight
+                  size={16}
+                  className="shrink-0 mt-3 text-zinc-600"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Metrics */}
+        <div className="flex flex-wrap gap-4 mb-5">
+          <div
+            className="rounded-lg border px-4 py-3"
+            style={{
+              borderColor: `${color}33`,
+              backgroundColor: `${color}0a`,
+            }}
+          >
+            <p className="text-2xl font-bold" style={{ color }}>
+              ~30 min
+            </p>
+            <p className="text-xs text-zinc-400">avg task completion</p>
+          </div>
+          <div
+            className="rounded-lg border px-4 py-3"
+            style={{
+              borderColor: `${color}33`,
+              backgroundColor: `${color}0a`,
+            }}
+          >
+            <p className="text-2xl font-bold" style={{ color }}>
+              22 bug fixes
+            </p>
+            <p className="text-xs text-zinc-400">resolved in ~1 hour</p>
+          </div>
+        </div>
+
+        {/* Note */}
+        <p className="text-xs text-zinc-500 mb-4">
+          This pattern extends to any CLI or MCP-compatible tool — S3, AWS, CI
+          pipelines, databases, and more.
+        </p>
+
+        {/* Tech badges */}
+        <div className="flex flex-wrap gap-1.5">
+          {workflowTools.map((tool) => (
+            <Badge key={tool} label={tool} color={color} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function App() {
   return (
     <div className="min-h-screen">
@@ -250,6 +380,9 @@ export default function App() {
           ))}
         </div>
       </section>
+
+      {/* AI Workflow */}
+      <WorkflowSection />
 
       {/* Skills */}
       <section className="max-w-4xl mx-auto px-6 pb-16">
