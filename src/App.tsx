@@ -6,6 +6,9 @@ import {
   Code2,
   Rocket,
   Construction,
+  Briefcase,
+  GraduationCap,
+  FileText,
 } from "lucide-react";
 
 const projects = [
@@ -230,7 +233,7 @@ export default function App() {
             <Linkedin size={20} />
           </a>
           <a
-            href="mailto:kevin@example.com"
+            href="mailto:kevin36615@gmail.com"
             className="text-zinc-500 hover:text-white transition-colors"
           >
             <Mail size={20} />
@@ -270,6 +273,141 @@ export default function App() {
         </div>
       </section>
 
+      {/* Experience */}
+      <section className="max-w-4xl mx-auto px-6 pb-16">
+        <h2 className="text-2xl font-bold mb-8">Experience</h2>
+        <div className="space-y-6">
+          {[
+            {
+              title: "Senior Frontend Engineer (Fullstack)",
+              company: "Centene Corporation",
+              period: "Aug 2025 - Present",
+              tech: "React, TypeScript, Node.js, Express, Kubernetes, Azure",
+              bullets: [
+                "Develop enterprise healthcare platform features supporting internal care-management workflows",
+                "Implement fullstack functionality spanning React UI, Node.js services, and API integrations",
+                "Improve performance through optimized data fetching, memoization, and bundle optimization",
+              ],
+            },
+            {
+              title: "Fullstack Developer",
+              company: "KPMG",
+              period: "May 2024 - Aug 2025",
+              tech: "React, Node.js, Express, Azure SQL, Power BI, Azure DevOps",
+              bullets: [
+                "Architected public grants portal using React, Node.js, and Azure supporting multi-agency funding",
+                "Built AI-driven document processing workflows using Azure Document Intelligence",
+                "Developed auditor validation interface reducing review time by 40%",
+              ],
+            },
+            {
+              title: "Lead Frontend / Fullstack Engineer",
+              company: "IBM",
+              period: "Jun 2020 - May 2024",
+              tech: "React, Next.js, TypeScript, Node.js, Tailwind CSS",
+              bullets: [
+                "Led modernization of legacy Angular/JSP applications migrating to React and Next.js",
+                "Improved Lighthouse performance and accessibility scores from below 20 to above 90",
+                "Led teams of 3-12 engineers mentoring developers and improving engineering standards",
+              ],
+            },
+            {
+              title: "Senior Frontend Developer",
+              company: "OCLC",
+              period: "Jan 2018 - Jun 2020",
+              tech: "React, Redux, REST APIs",
+              bullets: [
+                "Rebuilt customer portal serving 800K+ daily users migrating from JSP to React",
+                "Implemented internationalization and RTL language support increasing engagement by 15%",
+              ],
+            },
+            {
+              title: "Fullstack Engineer",
+              company: "Unified",
+              period: "Aug 2016 - Jan 2018",
+              tech: "React, Redux, Groovy, Jenkins",
+              bullets: [
+                "Built analytics dashboards with advanced filtering and reporting capabilities",
+                "Increased automated test coverage to 95% improving release reliability",
+              ],
+            },
+          ].map((job) => (
+            <div
+              key={job.company}
+              className="bg-[#111118] border border-[#222233] rounded-xl p-5"
+            >
+              <div className="flex items-start justify-between mb-2">
+                <div className="flex items-start gap-3">
+                  <Briefcase
+                    size={18}
+                    className="text-zinc-500 mt-0.5 shrink-0"
+                  />
+                  <div>
+                    <h3 className="font-semibold text-zinc-200">
+                      {job.title}
+                    </h3>
+                    <p className="text-sm text-zinc-400">{job.company}</p>
+                  </div>
+                </div>
+                <span className="text-xs text-zinc-500 shrink-0">
+                  {job.period}
+                </span>
+              </div>
+              <p className="text-xs text-zinc-500 ml-[30px] mb-2">
+                {job.tech}
+              </p>
+              <ul className="space-y-1 ml-[30px]">
+                {job.bullets.map((b, i) => (
+                  <li key={i} className="flex gap-2 text-sm text-zinc-400">
+                    <span className="text-zinc-600 shrink-0">&#8226;</span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Education */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="bg-[#111118] border border-[#222233] rounded-xl p-5 flex items-start gap-3">
+            <GraduationCap size={18} className="text-zinc-500 mt-0.5" />
+            <div>
+              <h3 className="font-semibold text-zinc-200 text-sm">
+                Hack Reactor
+              </h3>
+              <p className="text-xs text-zinc-400">
+                Advanced Software Engineering Bootcamp (2016)
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#111118] border border-[#222233] rounded-xl p-5 flex items-start gap-3">
+            <GraduationCap size={18} className="text-zinc-500 mt-0.5" />
+            <div>
+              <h3 className="font-semibold text-zinc-200 text-sm">
+                Temple University
+              </h3>
+              <p className="text-xs text-zinc-400">
+                B.A. Psychology, Honors Program (2015)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Resume Download */}
+        <div className="mt-6 flex justify-center">
+          <a
+            href="/Kevin_Doddy_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-colors border border-zinc-700"
+          >
+            <FileText size={16} />
+            Download Full Resume (PDF)
+          </a>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="max-w-4xl mx-auto px-6 py-12 border-t border-[#222233]">
         <div className="flex items-center justify-between text-sm text-zinc-500">
@@ -292,7 +430,7 @@ export default function App() {
               LinkedIn
             </a>
             <a
-              href="mailto:kevin@example.com"
+              href="mailto:kevin36615@gmail.com"
               className="hover:text-white transition-colors"
             >
               Contact
