@@ -13,8 +13,8 @@ const projects = [
     title: "GiftSync",
     tagline: "AI-powered gift planning with budget tracking and collaboration",
     status: "live" as const,
-    demoUrl: "#", // placeholder — will be giftsync-demo.vercel.app
-    repoUrl: "#",
+    demoUrl: "https://giftsync-demo.vercel.app",
+    repoUrl: "https://github.com/kdoddy36615/giftsync-portfolio",
     stack: [
       "Next.js 15",
       "React Native / Expo",
@@ -39,8 +39,8 @@ const projects = [
     tagline:
       "Local-first relocation toolkit with multi-vehicle convoy planning",
     status: "live" as const,
-    demoUrl: "#", // placeholder — will be move-planner-demo.vercel.app
-    repoUrl: "#",
+    demoUrl: "https://texas-move-planner-kevins-projects-cc8e5577.vercel.app",
+    repoUrl: "https://github.com/kdoddy36615/texas-move-planner-portfolio",
     stack: [
       "React",
       "TypeScript",
