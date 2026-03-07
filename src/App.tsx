@@ -11,6 +11,7 @@ import {
   FileText,
   Zap,
   ArrowRight,
+  Phone,
 } from "lucide-react";
 
 const projects = [
@@ -345,29 +346,51 @@ export default function App() {
           and AI integrations. I care about clean architecture, real-world
           usability, and shipping fast.
         </p>
-        <div className="flex gap-4 mt-6">
-          <a
-            href="https://github.com/kdoddy36615"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-zinc-400 hover:text-white transition-colors"
-          >
-            <Github size={20} />
-          </a>
-          <a
-            href="https://linkedin.com/in/kevindoddy"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#0A66C2] hover:text-[#0a7ff5] transition-colors"
-          >
-            <Linkedin size={20} />
-          </a>
-          <a
-            href="mailto:kevin36615@gmail.com"
-            className="text-[#EA4335] hover:text-[#ff5a4d] transition-colors"
-          >
-            <Mail size={20} />
-          </a>
+        <div className="mt-6 space-y-2">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-zinc-400">
+            <span className="flex items-center gap-1.5">
+              <Mail size={14} className="text-zinc-500" />
+              kevin36615@gmail.com
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Phone size={14} className="text-zinc-500" />
+              (484) 242-9904
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <a
+              href="https://linkedin.com/in/kevindoddy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[#0A66C2] text-white hover:bg-[#0955a0] transition-colors"
+            >
+              <Linkedin size={14} />
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/kdoddy36615"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-zinc-700 text-white hover:bg-zinc-600 transition-colors"
+            >
+              <Github size={14} />
+              GitHub
+            </a>
+            <a
+              href="mailto:kevin36615@gmail.com"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[#EA4335] text-white hover:bg-[#d33426] transition-colors"
+            >
+              <Mail size={14} />
+              Email
+            </a>
+            <a
+              href="tel:+14842429904"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 transition-colors"
+            >
+              <Phone size={14} />
+              Call
+            </a>
+          </div>
         </div>
       </header>
 
