@@ -214,7 +214,7 @@ export default function App() {
         </p>
         <div className="flex gap-4 mt-6">
           <a
-            href="https://github.com/kdoddy"
+            href="https://github.com/kdoddy36615"
             target="_blank"
             rel="noopener noreferrer"
             className="text-zinc-500 hover:text-white transition-colors"
@@ -276,7 +276,7 @@ export default function App() {
           <span>&copy; {new Date().getFullYear()} Kevin Doddy</span>
           <div className="flex gap-4">
             <a
-              href="https://github.com/kdoddy"
+              href="https://github.com/kdoddy36615"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
