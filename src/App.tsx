@@ -334,76 +334,73 @@ export default function App() {
     <div className="min-h-screen">
       {/* Hero */}
       <header className="max-w-4xl mx-auto px-6 pt-20 pb-16">
-        <div className="flex flex-col sm:flex-row gap-8 items-start">
-          {/* Headshot */}
-          <img
-            src="/headshot.jpg"
-            alt="Kevin Doddy"
-            className="w-36 h-36 rounded-2xl object-cover border-2 border-zinc-700 shrink-0"
-          />
-
-          {/* Info */}
-          <div className="flex-1">
-            <div className="flex items-center gap-2 text-sm text-zinc-500 mb-2">
-              <Code2 size={16} className="text-accent" />
-              <span>Full-Stack Software Engineer</span>
-            </div>
-            <h1 className="text-5xl font-extrabold tracking-tight mb-3">
+        <div>
+          <div className="flex items-center gap-2 text-sm text-zinc-500 mb-3">
+            <Code2 size={16} className="text-accent" />
+            <span>Full-Stack Software Engineer</span>
+          </div>
+          <div className="flex items-center gap-4 mb-3">
+            <img
+              src="/headshot.jpg"
+              alt="Kevin Doddy"
+              className="w-16 h-16 rounded-full object-cover border-2 border-zinc-600 shrink-0"
+            />
+            <h1 className="text-5xl font-extrabold tracking-tight">
               Kevin Doddy
             </h1>
-            <p className="text-lg text-zinc-400 max-w-2xl leading-relaxed mb-5">
-              I build polished, full-stack applications with modern React,
-              TypeScript, and AI integrations. I care about clean architecture,
-              real-world usability, and shipping fast.
-            </p>
+          </div>
+          <p className="text-lg text-zinc-400 max-w-2xl leading-relaxed mb-5">
+            I build polished, full-stack applications with modern React,
+            TypeScript, and AI integrations. I care about clean architecture,
+            real-world usability, and shipping fast.
+          </p>
 
-            {/* Contact info */}
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-zinc-400 mb-3">
-              <span className="flex items-center gap-1.5">
-                <Mail size={14} className="text-zinc-500" />
-                kevin36615@gmail.com
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Phone size={14} className="text-zinc-500" />
-                (484) 242-9904
-              </span>
-            </div>
+          {/* Contact info */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-zinc-400 mb-3">
+            <span className="flex items-center gap-1.5">
+              <Mail size={14} className="text-zinc-500" />
+              kevin36615@gmail.com
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Phone size={14} className="text-zinc-500" />
+              (484) 242-9904
+            </span>
+          </div>
 
-            {/* Action buttons */}
-            <div className="flex flex-wrap gap-2">
-              <a
-                href="https://linkedin.com/in/kevindoddy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[#0A66C2] text-white hover:bg-[#0955a0] transition-colors"
-              >
-                <Linkedin size={14} />
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/kdoddy36615"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-zinc-700 text-white hover:bg-zinc-600 transition-colors"
-              >
-                <Github size={14} />
-                GitHub
-              </a>
-              <a
-                href="mailto:kevin36615@gmail.com"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[#EA4335] text-white hover:bg-[#d33426] transition-colors"
-              >
-                <Mail size={14} />
-                Email
-              </a>
-              <a
-                href="tel:+14842429904"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 transition-colors"
-              >
-                <Phone size={14} />
-                Call
-              </a>
-            </div>
+          {/* Action buttons */}
+          <div className="flex flex-wrap gap-2">
+            <a
+              href="https://linkedin.com/in/kevindoddy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[#0A66C2] text-white hover:bg-[#0955a0] transition-colors"
+            >
+              <Linkedin size={14} />
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/kdoddy36615"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-zinc-700 text-white hover:bg-zinc-600 transition-colors"
+            >
+              <Github size={14} />
+              GitHub
+            </a>
+            <a
+              href="mailto:kevin36615@gmail.com"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[#EA4335] text-white hover:bg-[#d33426] transition-colors"
+            >
+              <Mail size={14} />
+              Email
+            </a>
+            <a
+              href="tel:+14842429904"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 transition-colors"
+            >
+              <Phone size={14} />
+              Call
+            </a>
           </div>
         </div>
       </header>
