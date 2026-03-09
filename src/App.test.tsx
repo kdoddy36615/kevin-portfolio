@@ -31,7 +31,7 @@ describe("App", () => {
     renderApp();
     expect(screen.getAllByText("GiftSync").length).toBeGreaterThanOrEqual(1);
     expect(
-      screen.getAllByText("Texas Move Planner").length
+      screen.getAllByText("MovePlanner").length
     ).toBeGreaterThanOrEqual(1);
     expect(
       screen.getAllByText("LinkedIn Pro 2026").length

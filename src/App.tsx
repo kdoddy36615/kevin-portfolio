@@ -49,7 +49,7 @@ const projects = [
     icon: Gift,
   },
   {
-    title: "Texas Move Planner",
+    title: "MovePlanner",
     tagline:
       "Local-first relocation toolkit with multi-vehicle convoy planning",
     status: "live" as const,

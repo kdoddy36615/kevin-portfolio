@@ -29,7 +29,7 @@ AI-powered gift planning with budget tracking, real-time collaboration, and Supa
 
 [Live Demo](https://trygiftsync.app) · [Source](https://github.com/kdoddy36615/giftsync-portfolio)
 
-### Texas Move Planner
+### MovePlanner
 Local-first relocation toolkit with multi-vehicle convoy planning, interactive financial dashboard, and rule-based AI strategy recommendations. Zero-backend architecture using localStorage.
 
 [Live Demo](https://move-planner-demo.vercel.app) · [Source](https://github.com/kdoddy36615/texas-move-planner-portfolio)
