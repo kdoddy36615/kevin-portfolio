@@ -561,12 +561,14 @@ export default function App() {
       </header>
 
       {/* Projects */}
-      <CollapsibleSection title="Projects" icon={Rocket}>
-        <p className="text-xs text-zinc-500 -mt-4 mb-6">
+      <div className="max-w-4xl mx-auto px-6 mb-2">
+        <p className="text-sm text-zinc-500">
           These are live demos with rate limits in place. If something isn't loading, feel free to{" "}
           <a href="mailto:kevin36615@gmail.com" className="text-zinc-400 underline underline-offset-2 hover:text-zinc-300">reach out</a>{" "}
           and I'll get it back up.
         </p>
+      </div>
+      <CollapsibleSection title="Projects" icon={Rocket}>
         <div className="grid gap-6">
           {projects.map((p) => (
             <ProjectCard key={p.title} project={p} />
