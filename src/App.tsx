@@ -174,6 +174,7 @@ function CollapsibleSection({
     <section className="max-w-4xl mx-auto px-6 pb-16">
       <button
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
         className="flex items-center gap-2.5 w-full text-left mb-8 group cursor-pointer"
       >
         <Icon size={22} className="text-zinc-400 group-hover:text-white transition-colors" />
@@ -424,6 +425,7 @@ function ExpandableAbout() {
     <div className="mb-5">
       <button
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
         className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer"
       >
         <ChevronDown
