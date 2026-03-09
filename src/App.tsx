@@ -98,8 +98,7 @@ const projects = [
     title: "BDO Hub",
     tagline:
       "Personal Black Desert Online progression dashboard with boss tracking and character management",
-    status: "live" as const,
-    demoUrl: "https://bdo-hub.vercel.app",
+    status: "dev" as const,
     repoUrl: "https://github.com/kdoddy36615/bdo-hub",
     stack: [
       "Next.js 16",
