@@ -26,7 +26,7 @@ const projects = [
     title: "GiftSync",
     tagline: "AI-powered gift planning with budget tracking and collaboration",
     status: "live" as const,
-    demoUrl: "https://giftsync-demo.vercel.app",
+    demoUrl: "https://trygiftsync.app",
     repoUrl: "https://github.com/kdoddy36615/giftsync-portfolio",
     stack: [
       "Next.js 15",

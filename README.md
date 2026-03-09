@@ -27,7 +27,7 @@ Personal developer portfolio showcasing full-stack projects built with modern Re
 ### GiftSync
 AI-powered gift planning with budget tracking, real-time collaboration, and Supabase auth with Row-Level Security. Built as a Turborepo monorepo with Next.js 15 web app and React Native mobile app.
 
-[Live Demo](https://giftsync-demo.vercel.app) · [Source](https://github.com/kdoddy36615/giftsync-portfolio)
+[Live Demo](https://trygiftsync.app) · [Source](https://github.com/kdoddy36615/giftsync-portfolio)
 
 ### Texas Move Planner
 Local-first relocation toolkit with multi-vehicle convoy planning, interactive financial dashboard, and rule-based AI strategy recommendations. Zero-backend architecture using localStorage.
