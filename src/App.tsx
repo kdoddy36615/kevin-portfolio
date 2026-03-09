@@ -1,3 +1,4 @@
+import { useState, type ReactNode } from "react";
 import {
   Github,
   Linkedin,
@@ -7,11 +8,17 @@ import {
   Rocket,
   Construction,
   Briefcase,
-  GraduationCap,
+
   FileText,
   Zap,
   ArrowRight,
   Phone,
+  ChevronDown,
+  Sparkles,
+  Gift,
+  Truck,
+  Swords,
+  type LucideIcon,
 } from "lucide-react";
 
 const projects = [
@@ -39,6 +46,7 @@ const projects = [
       "Monorepo with Turborepo: shared packages across web and mobile apps",
     ],
     color: "#6366f1",
+    icon: Gift,
   },
   {
     title: "Texas Move Planner",
@@ -63,6 +71,7 @@ const projects = [
       "Packing checklist, container estimator, and phased timeline all in one app",
     ],
     color: "#10b981",
+    icon: Truck,
   },
   {
     title: "LinkedIn Pro 2026",
@@ -83,6 +92,33 @@ const projects = [
       "Observability dashboard tracks sent requests, acceptance rates, and reply metrics",
     ],
     color: "#f59e0b",
+    icon: Linkedin,
+  },
+  {
+    title: "BDO Hub",
+    tagline:
+      "Personal Black Desert Online progression dashboard with boss tracking and character management",
+    status: "live" as const,
+    demoUrl: "https://bdo-hub.vercel.app",
+    repoUrl: "https://github.com/kdoddy36615/bdo-hub",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "Supabase",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "pnpm",
+    ],
+    highlights: [
+      "11 specialized modules: Characters, Boss Tracker, Playbooks, Storage, Gathering, Mentor Q&A, and more",
+      "Live boss spawn timers with priority grouping, alt assignment tracking, and kill history logging",
+      "12 custom themes (6 dark, 6 light) built with oklch color space and localStorage persistence",
+      "Supabase backend with 15+ tables, Row-Level Security policies, and automatic triggers",
+      "Monorepo with pnpm workspaces: shared database types package across apps",
+    ],
+    color: "#dc2626",
+    icon: Swords,
   },
 ];
 
@@ -106,6 +142,61 @@ const skills = {
     "VS Code",
   ],
 };
+
+const companyLogos: Record<string, string> = {
+  "Centene Corporation": "/centene_icon.png",
+  KPMG: "/kpmg_icon.png",
+  IBM: "/ibm_icon.png",
+  OCLC: "/logos/oclc.png",
+  Unified: "/logos/unified.png",
+};
+
+const skillColors: Record<string, string> = {
+  Frontend: "#6366f1",
+  Backend: "#10b981",
+  "AI / Automation": "#06b6d4",
+  "Dev Tools": "#f59e0b",
+};
+
+function CollapsibleSection({
+  title,
+  icon: Icon,
+  defaultOpen = true,
+  children,
+}: {
+  title: string;
+  icon: LucideIcon;
+  defaultOpen?: boolean;
+  children: ReactNode;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <section className="max-w-4xl mx-auto px-6 pb-16">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-2.5 w-full text-left mb-8 group cursor-pointer"
+      >
+        <Icon size={22} className="text-zinc-400 group-hover:text-white transition-colors" />
+        <h2 className="text-2xl font-bold group-hover:text-white transition-colors">
+          {title}
+        </h2>
+        <ChevronDown
+          size={20}
+          className={`ml-auto text-zinc-500 group-hover:text-zinc-300 transition-transform duration-300 ${
+            open ? "" : "-rotate-90"
+          }`}
+        />
+      </button>
+      <div
+        className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden">{children}</div>
+      </div>
+    </section>
+  );
+}
 
 function Badge({ label, color }: { label: string; color?: string }) {
   return (
@@ -149,9 +240,10 @@ function ProjectCard({
       <div className="flex items-start justify-between mb-4">
         <div>
           <h3
-            className="text-xl font-bold mb-1"
+            className="text-xl font-bold mb-1 flex items-center gap-2"
             style={{ color: project.color }}
           >
+            {project.icon && <project.icon size={20} />}
             {project.title}
           </h3>
           <p className="text-sm text-zinc-400">{project.tagline}</p>
@@ -235,8 +327,6 @@ const workflowTools = [
 function WorkflowSection() {
   const color = "#06b6d4";
   return (
-    <section className="max-w-4xl mx-auto px-6 pb-16">
-      <h2 className="text-2xl font-bold mb-8">AI-Augmented Development</h2>
       <div
         className="bg-[#111118] border rounded-2xl p-6"
         style={{ borderColor: `${color}33` }}
@@ -325,7 +415,57 @@ function WorkflowSection() {
           ))}
         </div>
       </div>
-    </section>
+  );
+}
+
+function ExpandableAbout() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="mb-5">
+      <button
+        onClick={() => setOpen(!open)}
+        className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer"
+      >
+        <ChevronDown
+          size={14}
+          className={`transition-transform duration-200 ${open ? "" : "-rotate-90"}`}
+        />
+        {open ? "Less about me" : "More about me"}
+      </button>
+      <div
+        className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="pt-3 space-y-3 text-sm text-zinc-400 leading-relaxed max-w-2xl">
+            <p>
+              Senior fullstack engineer with 9+ years of experience building
+              scalable enterprise applications across healthcare, consulting, and
+              SaaS platforms. I specialize in modern TypeScript-based
+              architectures using React, Next.js, and Node.js, with experience
+              designing API-driven systems, modernizing legacy platforms, and
+              improving application performance at scale.
+            </p>
+            <p>
+              Currently at Centene Corporation developing fullstack healthcare
+              platform features supporting internal care-management and
+              operational workflows — building React applications that integrate
+              with distributed backend services in containerized Kubernetes
+              environments.
+            </p>
+            <p>
+              Previously at IBM, I led modernization efforts migrating legacy
+              enterprise applications to React and Next.js, significantly
+              improving performance, accessibility, and developer productivity.
+              At KPMG, I built fullstack web applications including a public
+              grants platform and an AI-assisted audit workflow integrating Azure
+              Document Intelligence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -335,9 +475,20 @@ export default function App() {
       {/* Hero */}
       <header className="max-w-4xl mx-auto px-6 pt-20 pb-16">
         <div>
-          <div className="flex items-center gap-2 text-sm text-zinc-500 mb-3">
-            <Code2 size={16} className="text-accent" />
-            <span>Full-Stack Software Engineer</span>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2 text-sm text-zinc-500">
+              <Code2 size={16} className="text-accent" />
+              <span>Full-Stack Software Engineer</span>
+            </div>
+            <a
+              href="/Kevin_Doddy_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-zinc-200 text-zinc-900 hover:bg-zinc-300 transition-colors"
+            >
+              <FileText size={14} />
+              Download Full Resume
+            </a>
           </div>
           <div className="flex items-center gap-4 mb-3">
             <img
@@ -349,11 +500,13 @@ export default function App() {
               Kevin Doddy
             </h1>
           </div>
-          <p className="text-lg text-zinc-400 max-w-2xl leading-relaxed mb-5">
+          <p className="text-lg text-zinc-400 max-w-2xl leading-relaxed mb-4">
             I build polished, full-stack applications with modern React,
             TypeScript, and AI integrations. I care about clean architecture,
             real-world usability, and shipping fast.
           </p>
+
+          <ExpandableAbout />
 
           {/* Contact info */}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-zinc-400 mb-3">
@@ -382,14 +535,14 @@ export default function App() {
               href="https://github.com/kdoddy36615"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-zinc-700 text-white hover:bg-zinc-600 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-zinc-800 text-white hover:bg-zinc-700 transition-colors"
             >
               <Github size={14} />
               GitHub
             </a>
             <a
               href="mailto:kevin36615@gmail.com"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[#EA4335] text-white hover:bg-[#d33426] transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-zinc-700 text-white hover:bg-zinc-600 transition-colors"
             >
               <Mail size={14} />
               Email
@@ -406,43 +559,49 @@ export default function App() {
       </header>
 
       {/* Projects */}
-      <section className="max-w-4xl mx-auto px-6 pb-16">
-        <h2 className="text-2xl font-bold mb-8">Projects</h2>
+      <CollapsibleSection title="Projects" icon={Rocket}>
         <div className="grid gap-6">
           {projects.map((p) => (
             <ProjectCard key={p.title} project={p} />
           ))}
         </div>
-      </section>
+      </CollapsibleSection>
 
       {/* AI Workflow */}
-      <WorkflowSection />
+      <CollapsibleSection title="AI-Augmented Development" icon={Zap}>
+        <WorkflowSection />
+      </CollapsibleSection>
 
       {/* Skills */}
-      <section className="max-w-4xl mx-auto px-6 pb-16">
-        <h2 className="text-2xl font-bold mb-8">Skills</h2>
+      <CollapsibleSection title="Skills" icon={Code2}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {Object.entries(skills).map(([category, items]) => (
-            <div
-              key={category}
-              className="bg-[#111118] border border-[#222233] rounded-xl p-5"
-            >
-              <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-                {category}
-              </h3>
-              <div className="flex flex-wrap gap-1.5">
-                {items.map((s) => (
-                  <Badge key={s} label={s} />
-                ))}
+          {Object.entries(skills).map(([category, items]) => {
+            const color = skillColors[category];
+            return (
+              <div
+                key={category}
+                className="bg-[#111118] border border-[#222233] rounded-xl p-5 border-l-[3px]"
+                style={{ borderLeftColor: color }}
+              >
+                <h3
+                  className="text-sm font-semibold uppercase tracking-wider mb-3"
+                  style={{ color }}
+                >
+                  {category}
+                </h3>
+                <div className="flex flex-wrap gap-1.5">
+                  {items.map((s) => (
+                    <Badge key={s} label={s} color={color} />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-      </section>
+      </CollapsibleSection>
 
       {/* Experience */}
-      <section className="max-w-4xl mx-auto px-6 pb-16">
-        <h2 className="text-2xl font-bold mb-8">Experience</h2>
+      <CollapsibleSection title="Experience" icon={Briefcase}>
         <div className="space-y-6">
           {[
             {
@@ -505,10 +664,18 @@ export default function App() {
             >
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-start gap-3">
-                  <Briefcase
-                    size={18}
-                    className="text-zinc-500 mt-0.5 shrink-0"
-                  />
+                  {companyLogos[job.company] ? (
+                    <img
+                      src={companyLogos[job.company]}
+                      alt={job.company}
+                      className="w-8 h-8 rounded-md object-contain bg-white p-0.5 shrink-0 mt-0.5"
+                    />
+                  ) : (
+                    <Briefcase
+                      size={18}
+                      className="text-zinc-500 mt-0.5 shrink-0"
+                    />
+                  )}
                   <div>
                     <h3 className="font-semibold text-zinc-200">
                       {job.title}
@@ -520,10 +687,10 @@ export default function App() {
                   {job.period}
                 </span>
               </div>
-              <p className="text-xs text-zinc-500 ml-[30px] mb-2">
+              <p className="text-xs text-zinc-500 ml-[44px] mb-2">
                 {job.tech}
               </p>
-              <ul className="space-y-1 ml-[30px]">
+              <ul className="space-y-1 ml-[44px]">
                 {job.bullets.map((b, i) => (
                   <li key={i} className="flex gap-2 text-sm text-zinc-400">
                     <span className="text-zinc-600 shrink-0">&#8226;</span>
@@ -538,7 +705,11 @@ export default function App() {
         {/* Education */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-[#111118] border border-[#222233] rounded-xl p-5 flex items-start gap-3">
-            <GraduationCap size={18} className="text-zinc-500 mt-0.5" />
+            <img
+              src="/hackereactor_icon.png"
+              alt="Hack Reactor"
+              className="w-8 h-8 rounded-md object-contain bg-white p-0.5 shrink-0 mt-0.5"
+            />
             <div>
               <h3 className="font-semibold text-zinc-200 text-sm">
                 Hack Reactor
@@ -549,7 +720,11 @@ export default function App() {
             </div>
           </div>
           <div className="bg-[#111118] border border-[#222233] rounded-xl p-5 flex items-start gap-3">
-            <GraduationCap size={18} className="text-zinc-500 mt-0.5" />
+            <img
+              src="/temple_icon.png"
+              alt="Temple University"
+              className="w-8 h-8 rounded-md object-contain bg-white p-0.5 shrink-0 mt-0.5"
+            />
             <div>
               <h3 className="font-semibold text-zinc-200 text-sm">
                 Temple University
@@ -561,19 +736,40 @@ export default function App() {
           </div>
         </div>
 
-        {/* Resume Download */}
-        <div className="mt-6 flex justify-center">
-          <a
-            href="/Kevin_Doddy_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-colors border border-zinc-700"
-          >
-            <FileText size={16} />
-            Download Full Resume (PDF)
-          </a>
+      </CollapsibleSection>
+
+      {/* Built with Claude */}
+      <div className="max-w-4xl mx-auto px-6 pb-12 pt-4 border-t border-[#222233]">
+        <div className="bg-[#111118] border border-[#222233] rounded-xl p-5 flex items-start gap-4">
+          <Sparkles size={20} className="text-[#06b6d4] shrink-0 mt-0.5" />
+          <div>
+            <h3 className="font-semibold text-zinc-200 text-sm mb-1">
+              Built with assistance from Claude
+            </h3>
+            <p className="text-sm text-zinc-400 leading-relaxed mb-2">
+              This portfolio was built in a single evening with assistance
+              from{" "}
+              <span className="text-zinc-300">Claude Code</span> —
+              scaffolding, component design, styling, testing, and
+              deployment were developed through conversational iteration.
+            </p>
+            <p className="text-sm text-zinc-400 leading-relaxed mb-3">
+              Includes 14 automated tests (Vitest + React Testing Library),
+              ESLint with TypeScript rules, and CI-ready build scripts.
+              Type-checked with strict TypeScript and deployed to Vercel.
+            </p>
+            <a
+              href="https://github.com/kdoddy36615/kevin-portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-[#06b6d4] hover:text-[#22d3ee] transition-colors"
+            >
+              <Github size={14} />
+              View source on GitHub
+            </a>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* Footer */}
       <footer className="max-w-4xl mx-auto px-6 py-12 border-t border-[#222233]">
