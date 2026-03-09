@@ -99,6 +99,7 @@ const projects = [
     tagline:
       "Personal Black Desert Online progression dashboard with boss tracking and character management",
     status: "dev" as const,
+    demoUrl: "https://bdo-hub.vercel.app/dashboard",
     repoUrl: "https://github.com/kdoddy36615/bdo-hub",
     stack: [
       "Next.js 16",
@@ -265,27 +266,31 @@ function ProjectCard({
         ))}
       </ul>
 
-      {project.status === "live" && (
+      {(project.demoUrl || project.repoUrl) && (
         <div className="flex gap-3">
-          <a
-            href={project.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg text-white transition-colors"
-            style={{ backgroundColor: project.color }}
-          >
-            <ExternalLink size={14} />
-            Live Demo
-          </a>
-          <a
-            href={project.repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-colors border border-zinc-700"
-          >
-            <Github size={14} />
-            Source
-          </a>
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg text-white transition-colors"
+              style={{ backgroundColor: project.color }}
+            >
+              <ExternalLink size={14} />
+              Live Demo
+            </a>
+          )}
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-colors border border-zinc-700"
+            >
+              <Github size={14} />
+              Source
+            </a>
+          )}
         </div>
       )}
     </div>
