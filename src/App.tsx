@@ -361,17 +361,12 @@ function WorkflowSection() {
           <div className="flex items-center gap-2 mb-1">
             <Zap size={20} style={{ color }} />
             <h3 className="text-lg font-bold" style={{ color }}>
-              AI-Augmented Development Platform
+              AI-Augmented Development
             </h3>
           </div>
-          <p className="text-xs text-zinc-500 mb-3">
-            Designed and implemented by me as a modular AI-assisted development platform.
-          </p>
-          <p className="text-sm text-zinc-400 mb-6 leading-relaxed">
-            A development platform I built that orchestrates CLI tooling and AI coding agents
-            into a structured engineering workflow. It converts structured tasks into review-ready
-            pull requests by integrating task ingestion, compliance rules, design system context,
-            automated implementation, and version control operations.
+          <p className="text-sm text-zinc-400 mb-6">
+            A repeatable pipeline that turns CLI tools + Claude Code into a
+            full-cycle development workflow.
           </p>
 
           {/* Pipeline */}
@@ -444,7 +439,7 @@ function WorkflowSection() {
               size={14}
               className={`transition-transform duration-200 ${archOpen ? "" : "-rotate-90"}`}
             />
-            {archOpen ? "Hide Architecture" : "View Architecture"}
+            {archOpen ? "Hide Technical Details" : "View Technical Architecture"}
           </button>
         </div>
 
@@ -455,12 +450,12 @@ function WorkflowSection() {
           }`}
         >
           <div className="overflow-hidden">
-            <div className="space-y-6">
+            <div
+              className="bg-[#111118] border rounded-2xl mt-4 divide-y divide-[#06b6d422]"
+              style={{ borderColor: `${color}33` }}
+            >
               {/* Architecture Overview */}
-              <div
-                className="bg-[#111118] border rounded-2xl p-6"
-                style={{ borderColor: `${color}33` }}
-              >
+              <div className="p-6" style={{ borderColor: `${color}22` }}>
                 <h4 className="text-sm font-semibold text-zinc-200 mb-3">Architecture Overview</h4>
                 <p className="text-sm text-zinc-400 leading-relaxed mb-4">
                   This system functions as a lightweight internal development platform that
@@ -471,7 +466,7 @@ function WorkflowSection() {
                 </p>
 
                 {/* Architecture diagram */}
-                <div className="space-y-2 mb-6">
+                <div className="space-y-2 mb-4">
                   {architectureLayers.map((layer, i) => (
                     <div key={layer.name} className="flex items-center gap-3">
                       <div
@@ -497,26 +492,23 @@ function WorkflowSection() {
               </div>
 
               {/* Why I Built This */}
-              <div
-                className="bg-[#111118] border rounded-2xl p-6"
-                style={{ borderColor: `${color}33` }}
-              >
-                <h4 className="text-sm font-semibold text-zinc-200 mb-3">Why I Built This</h4>
+              <div className="p-6" style={{ borderColor: `${color}22` }}>
+                <h4 className="text-sm font-semibold text-zinc-200 mb-3">Motivation</h4>
                 <p className="text-sm text-zinc-400 leading-relaxed mb-4">
                   AI coding tools are powerful but unreliable when used without structure.
                   I built this platform to solve three core problems:
                 </p>
                 <ul className="space-y-2 mb-4">
                   <li className="flex gap-2 text-sm text-zinc-400">
-                    <span className="text-zinc-600 shrink-0">1.</span>
+                    <span className="shrink-0" style={{ color }}>1.</span>
                     Provide guardrails so AI agents follow repository standards and security policies.
                   </li>
                   <li className="flex gap-2 text-sm text-zinc-400">
-                    <span className="text-zinc-600 shrink-0">2.</span>
+                    <span className="shrink-0" style={{ color }}>2.</span>
                     Connect AI generation with real engineering artifacts such as tickets, design systems, and version control.
                   </li>
                   <li className="flex gap-2 text-sm text-zinc-400">
-                    <span className="text-zinc-600 shrink-0">3.</span>
+                    <span className="shrink-0" style={{ color }}>3.</span>
                     Reduce the time required to move from a defined task to a pull request ready for human review.
                   </li>
                 </ul>
@@ -526,10 +518,7 @@ function WorkflowSection() {
               </div>
 
               {/* Extensibility */}
-              <div
-                className="bg-[#111118] border rounded-2xl p-6"
-                style={{ borderColor: `${color}33` }}
-              >
+              <div className="p-6">
                 <h4 className="text-sm font-semibold text-zinc-200 mb-3">Extensibility</h4>
                 <p className="text-sm text-zinc-400 leading-relaxed mb-4">
                   The platform is intentionally CLI-driven so it can integrate with a wide
