@@ -602,6 +602,17 @@ export default function App() {
 
       {/* Experience */}
       <CollapsibleSection title="Experience" icon={Briefcase}>
+        <div className="mb-6">
+          <a
+            href="https://linkedin.com/in/kevindoddy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[#0A66C2] text-white hover:bg-[#0955a0] transition-colors"
+          >
+            <Linkedin size={14} />
+            LinkedIn
+          </a>
+        </div>
         <div className="space-y-6">
           {[
             {
