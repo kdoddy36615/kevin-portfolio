@@ -271,8 +271,6 @@ function ProjectCard({
           {project.demoUrl && (
             <a
               href={project.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg text-white transition-colors"
               style={{ backgroundColor: project.color }}
             >
@@ -283,8 +281,6 @@ function ProjectCard({
           {project.repoUrl && (
             <a
               href={project.repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-colors border border-zinc-700"
             >
               <Github size={14} />
