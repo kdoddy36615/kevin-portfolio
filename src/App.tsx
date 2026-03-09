@@ -602,7 +602,7 @@ export default function App() {
 
       {/* Experience */}
       <CollapsibleSection title="Experience" icon={Briefcase}>
-        <div className="mb-4 -mt-4">
+        <div className="mb-6">
           <a
             href="https://linkedin.com/in/kevindoddy"
             target="_blank"
