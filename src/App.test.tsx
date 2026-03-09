@@ -129,7 +129,7 @@ describe("CollapsibleSection", () => {
   it("sections default to expanded", () => {
     const container = renderApp();
     const sectionButtons = container.querySelectorAll(
-      "section button"
+      "section > button"
     );
     sectionButtons.forEach((btn) => {
       const contentWrapper = btn.nextElementSibling;

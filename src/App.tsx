@@ -297,123 +297,270 @@ function ProjectCard({
 const pipelineStages = [
   {
     name: "Task Ingestion",
-    desc: "CLI pulls assigned tickets with acceptance criteria",
+    desc: "CLI tools retrieve assigned tickets and acceptance criteria from project management systems such as Azure DevOps or Jira",
   },
   {
     name: "Compliance Guard",
-    desc: "CLAUDE.md enforces org rules — security, PHI, code standards",
+    desc: "Repository rule files enforce organizational constraints such as security policies, dependency restrictions, and code standards before implementation begins",
   },
   {
     name: "Design Sync",
-    desc: "Figma MCP extracts component specs and design tokens",
+    desc: "Design specifications and component tokens are pulled from design systems (e.g. via Figma MCP) so generated UI aligns with real product artifacts",
   },
   {
     name: "Implementation",
-    desc: "Claude Code writes, tests, and iterates with full context",
+    desc: "AI coding agents operate with full repository context to generate code, write tests, and iterate until acceptance criteria are satisfied",
   },
   {
     name: "Ship",
-    desc: "CLI commits, pushes, and opens draft PR for review",
+    desc: "The pipeline commits changes, pushes branches, and opens draft pull requests through Git CLI tooling for human review",
   },
 ];
 
-const workflowTools = [
-  "Claude Code",
-  "CLAUDE.md",
-  "Azure DevOps CLI",
-  "Figma MCP",
-  "GitLab CLI",
+const architectureLayers = [
+  {
+    name: "Interface Layer",
+    desc: "Ticket Sources (Azure DevOps / Jira)",
+  },
+  {
+    name: "Orchestration Layer",
+    desc: "CLI automation and pipeline coordination",
+  },
+  {
+    name: "AI Execution Layer",
+    desc: "Claude Code / AI coding agents",
+  },
+  {
+    name: "Integration Layer",
+    desc: "Figma MCP, Git CLI, CI pipelines, AWS CLI",
+  },
+  {
+    name: "Repository Layer",
+    desc: "Codebase, tests, pull requests",
+  },
+];
+
+const extensibilityCategories = [
+  { category: "Project Management", tools: ["Azure DevOps CLI", "Jira CLI"] },
+  { category: "Version Control", tools: ["Git CLI", "GitHub CLI", "GitLab CLI"] },
+  { category: "Design Systems", tools: ["Figma MCP"] },
+  { category: "Infrastructure", tools: ["AWS CLI", "S3", "CI/CD pipelines"] },
 ];
 
 function WorkflowSection() {
   const color = "#06b6d4";
+  const [archOpen, setArchOpen] = useState(false);
   return (
-      <div
-        className="bg-[#111118] border rounded-2xl p-6"
-        style={{ borderColor: `${color}33` }}
-      >
-        {/* Header */}
-        <div className="flex items-center gap-2 mb-1">
-          <Zap size={20} style={{ color }} />
-          <h3 className="text-lg font-bold" style={{ color }}>
-            AI-Augmented Development
-          </h3>
-        </div>
-        <p className="text-sm text-zinc-400 mb-6">
-          A repeatable pipeline that turns CLI tools + Claude Code into a
-          full-cycle development workflow.
-        </p>
+      <div className="space-y-6">
+        {/* Main card */}
+        <div
+          className="bg-[#111118] border rounded-2xl p-6"
+          style={{ borderColor: `${color}33` }}
+        >
+          {/* Header */}
+          <div className="flex items-center gap-2 mb-1">
+            <Zap size={20} style={{ color }} />
+            <h3 className="text-lg font-bold" style={{ color }}>
+              AI-Augmented Development Platform
+            </h3>
+          </div>
+          <p className="text-xs text-zinc-500 mb-3">
+            Designed and implemented by me as a modular AI-assisted development platform.
+          </p>
+          <p className="text-sm text-zinc-400 mb-6 leading-relaxed">
+            A development platform I built that orchestrates CLI tooling and AI coding agents
+            into a structured engineering workflow. It converts structured tasks into review-ready
+            pull requests by integrating task ingestion, compliance rules, design system context,
+            automated implementation, and version control operations.
+          </p>
 
-        {/* Pipeline */}
-        <div className="flex flex-wrap items-start gap-2 mb-6">
-          {pipelineStages.map((stage, i) => (
-            <div key={stage.name} className="flex items-start gap-2">
-              <div
-                className="rounded-lg border px-3 py-2 min-w-[130px]"
-                style={{
-                  borderColor: `${color}33`,
-                  backgroundColor: `${color}08`,
-                }}
-              >
-                <p
-                  className="text-xs font-semibold uppercase tracking-wider mb-0.5"
-                  style={{ color }}
+          {/* Pipeline */}
+          <div className="flex flex-wrap items-start gap-2 mb-6">
+            {pipelineStages.map((stage, i) => (
+              <div key={stage.name} className="flex items-start gap-2">
+                <div
+                  className="rounded-lg border px-3 py-2 min-w-[130px] max-w-[180px]"
+                  style={{
+                    borderColor: `${color}33`,
+                    backgroundColor: `${color}08`,
+                  }}
                 >
-                  {stage.name}
+                  <p
+                    className="text-xs font-semibold uppercase tracking-wider mb-0.5"
+                    style={{ color }}
+                  >
+                    {stage.name}
+                  </p>
+                  <p className="text-xs text-zinc-400 leading-snug">
+                    {stage.desc}
+                  </p>
+                </div>
+                {i < pipelineStages.length - 1 && (
+                  <ArrowRight
+                    size={16}
+                    className="shrink-0 mt-3 text-zinc-600"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Metrics */}
+          <div className="flex flex-wrap gap-4 mb-5">
+            <div
+              className="rounded-lg border px-4 py-3"
+              style={{
+                borderColor: `${color}33`,
+                backgroundColor: `${color}0a`,
+              }}
+            >
+              <p className="text-2xl font-bold" style={{ color }}>
+                ~30 min
+              </p>
+              <p className="text-xs text-zinc-400">avg task completion</p>
+            </div>
+            <div
+              className="rounded-lg border px-4 py-3"
+              style={{
+                borderColor: `${color}33`,
+                backgroundColor: `${color}0a`,
+              }}
+            >
+              <p className="text-2xl font-bold" style={{ color }}>
+                22 bug fixes
+              </p>
+              <p className="text-xs text-zinc-400">resolved in ~1 hour</p>
+            </div>
+          </div>
+
+          {/* View Architecture toggle */}
+          <button
+            onClick={() => setArchOpen(!archOpen)}
+            aria-expanded={archOpen}
+            className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors cursor-pointer hover:brightness-125"
+            style={{ color }}
+          >
+            <ChevronDown
+              size={14}
+              className={`transition-transform duration-200 ${archOpen ? "" : "-rotate-90"}`}
+            />
+            {archOpen ? "Hide Architecture" : "View Architecture"}
+          </button>
+        </div>
+
+        {/* Expandable architecture panel */}
+        <div
+          className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+            archOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <div className="space-y-6">
+              {/* Architecture Overview */}
+              <div
+                className="bg-[#111118] border rounded-2xl p-6"
+                style={{ borderColor: `${color}33` }}
+              >
+                <h4 className="text-sm font-semibold text-zinc-200 mb-3">Architecture Overview</h4>
+                <p className="text-sm text-zinc-400 leading-relaxed mb-4">
+                  This system functions as a lightweight internal development platform that
+                  structures how AI agents interact with a codebase. Rather than allowing AI
+                  tools to generate code without constraints, the platform provides a repeatable
+                  pipeline integrating project management tasks, repository rule enforcement,
+                  design system references, automated code generation, and version control workflows.
                 </p>
-                <p className="text-xs text-zinc-400 leading-snug">
-                  {stage.desc}
+
+                {/* Architecture diagram */}
+                <div className="space-y-2 mb-6">
+                  {architectureLayers.map((layer, i) => (
+                    <div key={layer.name} className="flex items-center gap-3">
+                      <div
+                        className="rounded-lg border px-3 py-2 flex-1"
+                        style={{
+                          borderColor: `${color}${20 + i * 8}`,
+                          backgroundColor: `${color}${4 + i * 2}`,
+                        }}
+                      >
+                        <p className="text-xs font-semibold uppercase tracking-wider" style={{ color }}>
+                          {layer.name}
+                        </p>
+                        <p className="text-xs text-zinc-400">{layer.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="text-sm text-zinc-400 leading-relaxed">
+                  This architecture creates a predictable development loop that converts
+                  structured tasks into review-ready pull requests.
                 </p>
               </div>
-              {i < pipelineStages.length - 1 && (
-                <ArrowRight
-                  size={16}
-                  className="shrink-0 mt-3 text-zinc-600"
-                />
-              )}
+
+              {/* Why I Built This */}
+              <div
+                className="bg-[#111118] border rounded-2xl p-6"
+                style={{ borderColor: `${color}33` }}
+              >
+                <h4 className="text-sm font-semibold text-zinc-200 mb-3">Why I Built This</h4>
+                <p className="text-sm text-zinc-400 leading-relaxed mb-4">
+                  AI coding tools are powerful but unreliable when used without structure.
+                  I built this platform to solve three core problems:
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex gap-2 text-sm text-zinc-400">
+                    <span className="text-zinc-600 shrink-0">1.</span>
+                    Provide guardrails so AI agents follow repository standards and security policies.
+                  </li>
+                  <li className="flex gap-2 text-sm text-zinc-400">
+                    <span className="text-zinc-600 shrink-0">2.</span>
+                    Connect AI generation with real engineering artifacts such as tickets, design systems, and version control.
+                  </li>
+                  <li className="flex gap-2 text-sm text-zinc-400">
+                    <span className="text-zinc-600 shrink-0">3.</span>
+                    Reduce the time required to move from a defined task to a pull request ready for human review.
+                  </li>
+                </ul>
+                <p className="text-sm text-zinc-400 leading-relaxed">
+                  This shifts developers toward higher-value work such as architecture, system design, and code review.
+                </p>
+              </div>
+
+              {/* Extensibility */}
+              <div
+                className="bg-[#111118] border rounded-2xl p-6"
+                style={{ borderColor: `${color}33` }}
+              >
+                <h4 className="text-sm font-semibold text-zinc-200 mb-3">Extensibility</h4>
+                <p className="text-sm text-zinc-400 leading-relaxed mb-4">
+                  The platform is intentionally CLI-driven so it can integrate with a wide
+                  range of engineering tools. Because each stage operates through CLI integrations,
+                  the pipeline can be adapted to different engineering environments without
+                  changing the core architecture.
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  {extensibilityCategories.map((cat) => (
+                    <div
+                      key={cat.category}
+                      className="rounded-lg border px-3 py-2"
+                      style={{
+                        borderColor: `${color}33`,
+                        backgroundColor: `${color}08`,
+                      }}
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-1.5" style={{ color }}>
+                        {cat.category}
+                      </p>
+                      <div className="space-y-0.5">
+                        {cat.tools.map((tool) => (
+                          <p key={tool} className="text-xs text-zinc-400">{tool}</p>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-
-        {/* Metrics */}
-        <div className="flex flex-wrap gap-4 mb-5">
-          <div
-            className="rounded-lg border px-4 py-3"
-            style={{
-              borderColor: `${color}33`,
-              backgroundColor: `${color}0a`,
-            }}
-          >
-            <p className="text-2xl font-bold" style={{ color }}>
-              ~30 min
-            </p>
-            <p className="text-xs text-zinc-400">avg task completion</p>
           </div>
-          <div
-            className="rounded-lg border px-4 py-3"
-            style={{
-              borderColor: `${color}33`,
-              backgroundColor: `${color}0a`,
-            }}
-          >
-            <p className="text-2xl font-bold" style={{ color }}>
-              22 bug fixes
-            </p>
-            <p className="text-xs text-zinc-400">resolved in ~1 hour</p>
-          </div>
-        </div>
-
-        {/* Note */}
-        <p className="text-xs text-zinc-500 mb-4">
-          This pattern extends to any CLI or MCP-compatible tool — S3, AWS, CI
-          pipelines, databases, and more.
-        </p>
-
-        {/* Tech badges */}
-        <div className="flex flex-wrap gap-1.5">
-          {workflowTools.map((tool) => (
-            <Badge key={tool} label={tool} color={color} />
-          ))}
         </div>
       </div>
   );
